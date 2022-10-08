@@ -2,6 +2,7 @@ package com.taks.controller.mapper;
 
 import org.springframework.stereotype.Component;
 
+import com.taks.controller.dtos.TaskCreateDTO;
 import com.taks.controller.dtos.TaskDTO;
 import com.taks.entity.Task;
 
@@ -21,5 +22,9 @@ public class TaskMapper {
 
     public List<TaskDTO> toTaskDTOList(List<Task> taskList) {
         return taskList.stream().map(this::toTaskDTO).collect(Collectors.toList());
+    }
+
+    public Task toTaskCreate(TaskCreateDTO dto) {
+        return MODEL_MAPPER.map(dto, Task.class);
     }
 }
